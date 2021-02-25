@@ -1,6 +1,6 @@
 part of 'models.dart';
 
-class Food {
+class Food extends Equatable {
   final int id;
   final String picturePath;
   final String name;
@@ -17,6 +17,10 @@ class Food {
       this.ingredients,
       this.price,
       this.rate});
+
+  @override
+  List<Object> get props =>
+      [id, picturePath, name, description, ingredients, price, rate];
 }
 
 List<Food> mockFood = [
