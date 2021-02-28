@@ -108,6 +108,7 @@ class _FoodPageState extends State<FoodPage> {
             ],
           ),
         ),
+        // fungsi agar saat smartphone mode landscape data tidak terpotong atau muncul semua data
         SizedBox(
           height: 80,
         ),
