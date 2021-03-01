@@ -44,7 +44,9 @@ class _FoodPageState extends State<FoodPage> {
                     borderRadius: BorderRadius.circular(8),
                     image: DecorationImage(
                         image: NetworkImage(
-                            'http://risetcdn.jatimtimes.com/images/2018/12/22/Jarang-Diketahui-Ini-Sepuluh-Fakta-tentang-Lisa-Blackpink150660d3a8418aa2.jpg'),
+                            (context.bloc<UserCubit>().state as UserLoaded)
+                                .user
+                                .picturePath),
                         fit: BoxFit.cover)),
               )
             ],
@@ -63,7 +65,20 @@ class _FoodPageState extends State<FoodPage> {
                           padding: EdgeInsets.only(
                               left: (e == mockFood.first) ? defaultMargin : 0,
                               right: defaultMargin),
-                          child: FoodCard(e),
+                          child: GestureDetector(
+                              onTap: () {
+                                Get.to(FoodDetailPage(
+                                  transaction: Transaction(
+                                      food: e,
+                                      user: (context.bloc<UserCubit>().state
+                                              as UserLoaded)
+                                          .user),
+                                  onBackButtonPressed: () {
+                                    Get.back();
+                                  },
+                                ));
+                              },
+                              child: FoodCard(e)),
                         ))
                     .toList(),
               )

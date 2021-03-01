@@ -6,12 +6,12 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    bool isLoading = false;
-
     return GeneralPage(
       title: "Sign In",
       subtitle: "Find your best ever meal",
@@ -71,12 +71,43 @@ class _SignInPageState extends State<SignInPage> {
             height: 45,
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
             child: isLoading
-                ? SpinKitFadingCircle(
-                    size: 45,
-                    color: mainColor,
-                  )
+                ? loadingIndicator
                 : RaisedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      setState(() {
+                        isLoading = true;
+                      });
+
+                      await context.bloc<UserCubit>().signIn(
+                          emailController.text, passwordController.text);
+                      UserState state = context.bloc<UserCubit>().state;
+
+                      if (state is UserLoaded) {
+                        // sukses login
+                        context.bloc<FoodCubit>().getFood();
+                        context.bloc<TransactionCubit>().getTransaction();
+                        Get.to(MainPage());
+                      } else {
+                        // gagal login
+                        Get.snackbar("", "",
+                            backgroundColor: "D9435E".toColor(),
+                            icon: Icon(MdiIcons.closeCircleOutline,
+                                color: Colors.white),
+                            titleText: Text("Sign In Failed",
+                                style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600)),
+                            messageText:
+                                Text((state as UserLoadingFailed).message,
+                                    style: GoogleFonts.poppins(
+                                      color: Colors.white,
+                                    )));
+
+                        setState(() {
+                          isLoading = false;
+                        });
+                      }
+                    },
                     elevation: 0,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),
