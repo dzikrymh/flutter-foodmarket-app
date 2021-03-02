@@ -22,6 +22,7 @@ class IlustrationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
             width: 150,
@@ -40,20 +41,21 @@ class IlustrationPage extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           Container(
-              margin: EdgeInsets.only(top: 30, bottom: 12),
-              width: 200,
-              height: 45,
-              child: RaisedButton(
-                onPressed: buttonTap1,
-                color: mainColor,
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
-                child: Text(
-                  buttonTitle1,
-                  style: blackFontStyle3.copyWith(fontWeight: FontWeight.w500),
-                ),
-              )),
+            margin: EdgeInsets.only(top: 30, bottom: 12),
+            width: 200,
+            height: 45,
+            child: RaisedButton(
+              onPressed: buttonTap1,
+              color: mainColor,
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)),
+              child: Text(
+                buttonTitle1,
+                style: blackFontStyle3.copyWith(fontWeight: FontWeight.w500),
+              ),
+            ),
+          ),
           (buttonTap2 == null)
               ? SizedBox()
               : SizedBox(
@@ -70,7 +72,8 @@ class IlustrationPage extends StatelessWidget {
                       style: blackFontStyle3.copyWith(
                           fontWeight: FontWeight.w500, color: Colors.white),
                     ),
-                  )),
+                  ),
+                )
         ],
       ),
     );
