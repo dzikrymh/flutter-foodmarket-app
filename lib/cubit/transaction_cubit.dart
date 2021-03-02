@@ -8,7 +8,7 @@ part 'transaction_state.dart';
 class TransactionCubit extends Cubit<TransactionState> {
   TransactionCubit() : super(TransactionInitial());
 
-  Future<void> getTransaction() async {
+  Future<void> getTransactions() async {
     ApiReturnValue<List<Transaction>> result =
         await TransactionServices.getTransaction();
 
