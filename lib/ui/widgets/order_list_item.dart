@@ -21,7 +21,7 @@ class OrderListItem extends StatelessWidget {
                   fit: BoxFit.cover)),
         ),
         SizedBox(
-          width: itemWidth - 182,
+          width: itemWidth - 182, // (60 + 12 + 110)
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -32,24 +32,24 @@ class OrderListItem extends StatelessWidget {
                 overflow: TextOverflow.clip,
               ),
               Text(
-                "${transaction.quantity} item(s) . " +
+                "${transaction.quantity} item(s) • " +
                     NumberFormat.currency(
-                      symbol: 'IDR ',
-                      decimalDigits: 0,
-                      locale: 'id-ID',
-                    ).format(transaction.total),
+                            symbol: 'IDR ', decimalDigits: 0, locale: 'id-ID')
+                        .format(transaction.total),
                 style: greyFontStyle.copyWith(fontSize: 13),
-              ),
+              )
             ],
           ),
         ),
         SizedBox(
-          width: 110, // slot panjang dari rating
+          width: 110,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(convertDateTime(transaction.dateTime),
-                  style: greyFontStyle.copyWith(fontSize: 12)),
+              Text(
+                convertDateTime(transaction.dateTime),
+                style: greyFontStyle.copyWith(fontSize: 12),
+              ),
               (transaction.status == TransactionStatus.cancelled)
                   ? Text(
                       'Cancelled',
@@ -64,14 +64,14 @@ class OrderListItem extends StatelessWidget {
                         )
                       : (transaction.status == TransactionStatus.on_delivery)
                           ? Text(
-                              'Pending',
+                              'On Delivery',
                               style: GoogleFonts.poppins(
                                   color: '1ABC9C'.toColor(), fontSize: 10),
                             )
                           : SizedBox()
             ],
           ),
-        ),
+        )
       ],
     );
   }
@@ -93,7 +93,7 @@ class OrderListItem extends StatelessWidget {
         month = 'Apr';
         break;
       case 5:
-        month = 'Mei';
+        month = 'May';
         break;
       case 6:
         month = 'Jun';
@@ -108,7 +108,7 @@ class OrderListItem extends StatelessWidget {
         month = 'Sep';
         break;
       case 10:
-        month = 'Okt';
+        month = 'Oct';
         break;
       case 11:
         month = 'Nov';

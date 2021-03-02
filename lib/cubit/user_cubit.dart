@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:food_market/cubit/cubit.dart';
 import 'package:food_market/models/models.dart';
 import 'package:food_market/services/services.dart';
 

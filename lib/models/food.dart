@@ -27,7 +27,7 @@ class Food extends Equatable {
       [id, picturePath, name, description, ingredients, price, rate];
 }
 
-List<Food> mockFood = [
+List<Food> mockFoods = [
   Food(
       id: 1,
       picturePath:
@@ -37,7 +37,7 @@ List<Food> mockFood = [
       ingredients: "Bawang Merah, Paprika, Bawang Bombay, Timun",
       price: 150000,
       rate: 4.2,
-      types: [FoodType.new_food, FoodType.popular, FoodType.recommended]),
+      types: [FoodType.new_food, FoodType.recommended, FoodType.popular]),
   Food(
       id: 2,
       picturePath:

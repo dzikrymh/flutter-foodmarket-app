@@ -1,11 +1,11 @@
 part of 'widgets.dart';
 
-class CustomTabbar extends StatelessWidget {
+class CustomTabBar extends StatelessWidget {
   final int selectedIndex;
   final List<String> titles;
   final Function(int) onTap;
 
-  CustomTabbar({@required this.selectedIndex, this.titles, this.onTap});
+  CustomTabBar({@required this.titles, this.selectedIndex, this.onTap});
 
   @override
   Widget build(BuildContext context) {

@@ -13,7 +13,7 @@ class _SignUpPageState extends State<SignUpPage> {
     TextEditingController nameController = TextEditingController();
 
     return GeneralPage(
-      title: "Sign Up",
+      title: 'Sign Up',
       subtitle: "Register and eat",
       onBackButtonPressed: () {
         Get.back();
@@ -33,7 +33,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   shape: BoxShape.circle,
                   image: DecorationImage(
                       image: NetworkImage(
-                          'http://risetcdn.jatimtimes.com/images/2018/12/22/Jarang-Diketahui-Ini-Sepuluh-Fakta-tentang-Lisa-Blackpink150660d3a8418aa2.jpg'),
+                          'https://i.pinimg.com/474x/8a/f4/7e/8af47e18b14b741f6be2ae499d23fcbe.jpg'),
                       fit: BoxFit.cover)),
             ),
           ),
@@ -41,7 +41,7 @@ class _SignUpPageState extends State<SignUpPage> {
             width: double.infinity,
             margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
             child: Text(
-              "Full Name ",
+              "Full Name",
               style: blackFontStyle2,
             ),
           ),
@@ -55,10 +55,9 @@ class _SignUpPageState extends State<SignUpPage> {
             child: TextField(
               controller: nameController,
               decoration: InputDecoration(
-                border: InputBorder.none,
-                hintStyle: greyFontStyle,
-                hintText: "Type your full name",
-              ),
+                  border: InputBorder.none,
+                  hintStyle: greyFontStyle,
+                  hintText: 'Type your full name'),
             ),
           ),
           Container(
@@ -79,10 +78,9 @@ class _SignUpPageState extends State<SignUpPage> {
             child: TextField(
               controller: emailController,
               decoration: InputDecoration(
-                border: InputBorder.none,
-                hintStyle: greyFontStyle,
-                hintText: "Type your email address",
-              ),
+                  border: InputBorder.none,
+                  hintStyle: greyFontStyle,
+                  hintText: 'Type your email address'),
             ),
           ),
           Container(
@@ -103,10 +101,9 @@ class _SignUpPageState extends State<SignUpPage> {
             child: TextField(
               controller: passwordController,
               decoration: InputDecoration(
-                border: InputBorder.none,
-                hintStyle: greyFontStyle,
-                hintText: "Type your password",
-              ),
+                  border: InputBorder.none,
+                  hintStyle: greyFontStyle,
+                  hintText: 'Type your password'),
             ),
           ),
           Container(
@@ -123,7 +120,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   borderRadius: BorderRadius.circular(8)),
               color: mainColor,
               child: Text(
-                "Continue",
+                'Continue',
                 style: GoogleFonts.poppins(
                     color: Colors.black, fontWeight: FontWeight.w500),
               ),

@@ -13,7 +13,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
     return BlocBuilder<TransactionCubit, TransactionState>(builder: (_, state) {
       if (state is TransactionLoaded) {
         if (state.transactions.length == 0) {
-          return IlustrationPage(
+          return IllustrationPage(
             title: 'Ouch! Hungry',
             subtitle: 'Seems you like have not\nordered any food yet',
             picturePath: 'assets/love_burger.png',
@@ -57,7 +57,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                     color: Colors.white,
                     child: Column(
                       children: [
-                        CustomTabbar(
+                        CustomTabBar(
                           titles: ['In Progress', 'Past Orders'],
                           selectedIndex: selectedIndex,
                           onTap: (index) {
@@ -85,7 +85,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                                       element.status ==
                                           TransactionStatus.cancelled)
                                   .toList();
-
+                                  
                           return Column(
                             children: transactions
                                 .map((e) => Padding(

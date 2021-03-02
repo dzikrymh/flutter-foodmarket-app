@@ -48,10 +48,9 @@ class GeneralPage extends StatelessWidget {
                                   height: 24,
                                   margin: EdgeInsets.only(right: 26),
                                   decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            'assets/back_arrow.png')),
-                                  ),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/back_arrow.png'))),
                                 ),
                               )
                             : SizedBox(),

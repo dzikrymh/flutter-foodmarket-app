@@ -10,10 +10,9 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int selectedPage = 0;
-  PageController pageController = PageController(initialPage: 0);
+  int selectedPage;
+  PageController pageController;
 
-  @override
   @override
   void initState() {
     super.initState();
@@ -31,7 +30,7 @@ class _MainPageState extends State<MainPage> {
           ),
           SafeArea(
               child: Container(
-            color: "FAFAFC".toColor(),
+            color: 'FAFAFC'.toColor(),
           )),
           SafeArea(
               child: PageView(
@@ -54,16 +53,17 @@ class _MainPageState extends State<MainPage> {
             ],
           )),
           Align(
-              alignment: Alignment.bottomCenter,
-              child: CustomBottomNavBar(
-                selectedIndex: selectedPage,
-                onTap: (index) {
-                  setState(() {
-                    selectedPage = index;
-                  });
-                  pageController.jumpToPage(selectedPage);
-                },
-              )),
+            alignment: Alignment.bottomCenter,
+            child: CustomBottomNavBar(
+              selectedIndex: selectedPage,
+              onTap: (index) {
+                setState(() {
+                  selectedPage = index;
+                });
+                pageController.jumpToPage(selectedPage);
+              },
+            ),
+          )
         ],
       ),
     );

@@ -1,4 +1,4 @@
-part of "pages.dart";
+part of 'pages.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -13,7 +13,7 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return GeneralPage(
-      title: "Sign In",
+      title: 'Sign In',
       subtitle: "Find your best ever meal",
       child: Column(
         children: [
@@ -35,10 +35,9 @@ class _SignInPageState extends State<SignInPage> {
             child: TextField(
               controller: emailController,
               decoration: InputDecoration(
-                border: InputBorder.none,
-                hintStyle: greyFontStyle,
-                hintText: "Type your email address",
-              ),
+                  border: InputBorder.none,
+                  hintStyle: greyFontStyle,
+                  hintText: 'Type your email address'),
             ),
           ),
           Container(
@@ -59,10 +58,9 @@ class _SignInPageState extends State<SignInPage> {
             child: TextField(
               controller: passwordController,
               decoration: InputDecoration(
-                border: InputBorder.none,
-                hintStyle: greyFontStyle,
-                hintText: "Type your password",
-              ),
+                  border: InputBorder.none,
+                  hintStyle: greyFontStyle,
+                  hintText: 'Type your password'),
             ),
           ),
           Container(
@@ -83,26 +81,26 @@ class _SignInPageState extends State<SignInPage> {
                       UserState state = context.bloc<UserCubit>().state;
 
                       if (state is UserLoaded) {
-                        // sukses login
-                        context.bloc<FoodCubit>().getFood();
-                        context.bloc<TransactionCubit>().getTransaction();
+                        context.bloc<FoodCubit>().getFoods();
+                        context.bloc<TransactionCubit>().getTransactions();
                         Get.to(MainPage());
                       } else {
-                        // gagal login
                         Get.snackbar("", "",
                             backgroundColor: "D9435E".toColor(),
-                            icon: Icon(MdiIcons.closeCircleOutline,
-                                color: Colors.white),
-                            titleText: Text("Sign In Failed",
-                                style: GoogleFonts.poppins(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600)),
-                            messageText:
-                                Text((state as UserLoadingFailed).message,
-                                    style: GoogleFonts.poppins(
-                                      color: Colors.white,
-                                    )));
-
+                            icon: Icon(
+                              MdiIcons.closeCircleOutline,
+                              color: Colors.white,
+                            ),
+                            titleText: Text(
+                              "Sign In Failed",
+                              style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            messageText: Text(
+                              (state as UserLoadingFailed).message,
+                              style: GoogleFonts.poppins(color: Colors.white),
+                            ));
                         setState(() {
                           isLoading = false;
                         });
@@ -113,7 +111,7 @@ class _SignInPageState extends State<SignInPage> {
                         borderRadius: BorderRadius.circular(8)),
                     color: mainColor,
                     child: Text(
-                      "Sign In",
+                      'Sign In',
                       style: GoogleFonts.poppins(
                           color: Colors.black, fontWeight: FontWeight.w500),
                     ),
@@ -136,9 +134,9 @@ class _SignInPageState extends State<SignInPage> {
                     elevation: 0,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),
-                    color: grayColor,
+                    color: greyColor,
                     child: Text(
-                      "Create New Account",
+                      'Create New Account',
                       style: GoogleFonts.poppins(
                           color: Colors.white, fontWeight: FontWeight.w500),
                     ),
