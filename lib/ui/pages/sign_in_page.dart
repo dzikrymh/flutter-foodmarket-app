@@ -82,10 +82,12 @@ class _SignInPageState extends State<SignInPage> {
                       UserState state = context.bloc<UserCubit>().state;
 
                       if (state is UserLoaded) {
+                        print('status login: sukses');
                         context.bloc<FoodCubit>().getFoods();
                         context.bloc<TransactionCubit>().getTransactions();
                         Get.to(MainPage());
                       } else {
+                        print('status login: gagal');
                         Get.snackbar("", "",
                             backgroundColor: "D9435E".toColor(),
                             icon: Icon(
