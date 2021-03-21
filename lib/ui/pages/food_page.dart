@@ -69,7 +69,7 @@ class _FoodPageState extends State<FoodPage> {
                             children: state.foods
                                 .map((e) => Padding(
                                       padding: EdgeInsets.only(
-                                          left: (e == mockFoods.first)
+                                          left: (e == state.foods.first)
                                               ? defaultMargin
                                               : 0,
                                           right: defaultMargin),
@@ -116,12 +116,14 @@ class _FoodPageState extends State<FoodPage> {
                   ),
                   BlocBuilder<FoodCubit, FoodState>(builder: (_, state) {
                     if (state is FoodLoaded) {
-                      List<Food> foods = state.foods.where((element) =>
-                          element.types.contains((selectedIndex == 0)
-                              ? FoodType.new_food
-                              : (selectedIndex == 1)
-                                  ? FoodType.popular
-                                  : FoodType.recommended)).toList();
+                      List<Food> foods = state.foods
+                          .where((element) =>
+                              element.types.contains((selectedIndex == 0)
+                                  ? FoodType.new_food
+                                  : (selectedIndex == 1)
+                                      ? FoodType.popular
+                                      : FoodType.recommended))
+                          .toList();
 
                       return Column(
                         children: foods

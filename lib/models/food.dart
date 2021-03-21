@@ -25,6 +25,29 @@ class Food extends Equatable {
   @override
   List<Object> get props =>
       [id, picturePath, name, description, ingredients, price, rate];
+
+  factory Food.fromJson(Map<String, dynamic> data) {
+    return Food(
+        id: data['id'],
+        picturePath: data['picturePath'],
+        name: data['name'],
+        description: data['description'],
+        ingredients: data['ingredients'],
+        price: data['price'],
+        rate: (data['rate'] as num).toDouble(),
+        types: data['types'].toString().split(',').map((e) {
+          switch (e) {
+            case 'recommended':
+              return FoodType.recommended;
+              break;
+            case 'popular':
+              return FoodType.popular;
+              break;
+            default:
+              return FoodType.new_food;
+          }
+        }).toList());
+  }
 }
 
 List<Food> mockFoods = [
