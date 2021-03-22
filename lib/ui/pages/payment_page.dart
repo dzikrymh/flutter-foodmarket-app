@@ -17,7 +17,9 @@ class _PaymentPageState extends State<PaymentPage> {
     return GeneralPage(
       title: 'Payment',
       subtitle: 'You deserve better meal',
-      onBackButtonPressed: () {},
+      onBackButtonPressed: () {
+        Get.back();
+      },
       backColor: 'FAFAFC'.toColor(),
       child: Column(
         children: [
@@ -356,7 +358,9 @@ class _PaymentPageState extends State<PaymentPage> {
                               total: (widget.transaction.total * 1.1).toInt() +
                                   50000));
 
-                      if (paymentURL == null) {
+                      print('Payment URL : ' + paymentURL);
+
+                      if (paymentURL != null) {
                         Get.to(PaymentMethodPage(paymentURL));
                       } else {
                         setState(() {

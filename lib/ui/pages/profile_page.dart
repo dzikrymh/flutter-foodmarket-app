@@ -82,7 +82,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 'Edit Profile',
                                 'Home Address',
                                 'Security',
-                                'Payment'
+                                'Payment',
+                                'Logout'
                               ]
                             : [
                                 'Rate App',
