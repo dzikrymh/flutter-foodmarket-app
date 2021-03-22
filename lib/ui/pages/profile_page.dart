@@ -96,23 +96,57 @@ class _ProfilePageState extends State<ProfilePage> {
                                   bottom: 16,
                                   left: defaultMargin,
                                   right: defaultMargin),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    e,
-                                    style: blackFontStyle3,
-                                  ),
-                                  SizedBox(
-                                    height: 24,
-                                    width: 24,
-                                    child: Image.asset(
-                                      'assets/right_arrow.png',
-                                      fit: BoxFit.contain,
+                              child: GestureDetector(
+                                onTap: () async {
+                                  if (e == 'Logout') {
+                                    // Todo: sign out function
+                                    await context.bloc<UserCubit>().signOut();
+                                    UserState state =
+                                        context.bloc<UserCubit>().state;
+                                    if (state is UserLoaded) {
+                                      print('status sign out: sukses');
+                                      Get.offAll(SignInPage());
+                                    } else {
+                                      print('status sign out: gagal');
+                                      Get.snackbar("", "",
+                                          backgroundColor: "D9435E".toColor(),
+                                          icon: Icon(
+                                            MdiIcons.closeCircleOutline,
+                                            color: Colors.white,
+                                          ),
+                                          titleText: Text(
+                                            "Sign Out Failed",
+                                            style: GoogleFonts.poppins(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                          messageText: Text(
+                                            (state as UserLoadingFailed)
+                                                .message,
+                                            style: GoogleFonts.poppins(
+                                                color: Colors.white),
+                                          ));
+                                    }
+                                  }
+                                },
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      e,
+                                      style: blackFontStyle3,
                                     ),
-                                  )
-                                ],
+                                    SizedBox(
+                                      height: 24,
+                                      width: 24,
+                                      child: Image.asset(
+                                        'assets/right_arrow.png',
+                                        fit: BoxFit.contain,
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ))
                         .toList(),

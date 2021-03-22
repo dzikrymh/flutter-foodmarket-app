@@ -97,4 +97,25 @@ class UserServices {
       return ApiReturnValue(message: 'Uploading profile picture failed');
     }
   }
+
+  static Future<ApiReturnValue<String>> signOut({http.Client client}) async {
+    client ??= http.Client();
+
+    String url = baseURL + 'logout';
+
+    var response = await client.post(url, headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${User.token}'
+    });
+
+    if (response.statusCode != 200) {
+      return ApiReturnValue(message: 'Please try again');
+    }
+
+    var data = jsonDecode(response.body);
+
+    String value = data['meta']['message'];
+
+    return ApiReturnValue(value: value);
+  }
 }
