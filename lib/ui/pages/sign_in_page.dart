@@ -77,16 +77,7 @@ class _SignInPageState extends State<SignInPage> {
                         isLoading = true;
                       });
 
-                      await context.bloc<UserCubit>().signIn(
-                          emailController.text, passwordController.text);
-                      UserState state = context.bloc<UserCubit>().state;
-
-                      if (state is UserLoaded) {
-                        print('status login: sukses');
-                        context.bloc<FoodCubit>().getFoods();
-                        context.bloc<TransactionCubit>().getTransactions();
-                        Get.to(MainPage());
-                      } else {
+                      if (emailController.text.isEmpty) {
                         print('status login: gagal');
                         Get.snackbar("", "",
                             backgroundColor: "D9435E".toColor(),
@@ -101,12 +92,65 @@ class _SignInPageState extends State<SignInPage> {
                                   fontWeight: FontWeight.w600),
                             ),
                             messageText: Text(
-                              (state as UserLoadingFailed).message,
+                              "Email can't be empty",
                               style: GoogleFonts.poppins(color: Colors.white),
                             ));
                         setState(() {
                           isLoading = false;
                         });
+                      } else if (passwordController.text.isEmpty) {
+                        print('status login: gagal');
+                        Get.snackbar("", "",
+                            backgroundColor: "D9435E".toColor(),
+                            icon: Icon(
+                              MdiIcons.closeCircleOutline,
+                              color: Colors.white,
+                            ),
+                            titleText: Text(
+                              "Sign In Failed",
+                              style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            messageText: Text(
+                              "Password can't be empty",
+                              style: GoogleFonts.poppins(color: Colors.white),
+                            ));
+                        setState(() {
+                          isLoading = false;
+                        });
+                      } else {
+                        await context.bloc<UserCubit>().signIn(
+                            emailController.text, passwordController.text);
+                        UserState state = context.bloc<UserCubit>().state;
+
+                        if (state is UserLoaded) {
+                          print('status login: sukses');
+                          context.bloc<FoodCubit>().getFoods();
+                          context.bloc<TransactionCubit>().getTransactions();
+                          Get.to(MainPage());
+                        } else {
+                          print('status login: gagal');
+                          Get.snackbar("", "",
+                              backgroundColor: "D9435E".toColor(),
+                              icon: Icon(
+                                MdiIcons.closeCircleOutline,
+                                color: Colors.white,
+                              ),
+                              titleText: Text(
+                                "Sign In Failed",
+                                style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              messageText: Text(
+                                (state as UserLoadingFailed).message,
+                                style: GoogleFonts.poppins(color: Colors.white),
+                              ));
+                          setState(() {
+                            isLoading = false;
+                          });
+                        }
                       }
                     },
                     elevation: 0,

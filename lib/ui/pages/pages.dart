@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:math';
 
@@ -31,3 +32,4 @@ part 'success_sign_up_page.dart';
 part 'order_history_page.dart';
 part 'profile_page.dart';
 part 'payment_method_page.dart';
+part 'splash_page.dart';

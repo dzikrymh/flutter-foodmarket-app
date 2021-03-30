@@ -19,6 +19,6 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (_) => TransactionCubit()),
         ],
         child: GetMaterialApp(
-            debugShowCheckedModeBanner: false, home: SignInPage()));
+            debugShowCheckedModeBanner: false, home: SplashPage()));
   }
 }
