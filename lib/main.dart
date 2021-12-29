@@ -13,12 +13,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (_) => UserCubit()),
-          BlocProvider(create: (_) => FoodCubit()),
-          BlocProvider(create: (_) => TransactionCubit()),
-        ],
-        child: GetMaterialApp(
-            debugShowCheckedModeBanner: false, home: SplashPage()));
+      providers: [
+        BlocProvider(create: (_) => UserCubit()),
+        BlocProvider(create: (_) => FoodCubit()),
+        BlocProvider(create: (_) => TransactionCubit()),
+      ],
+      child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: SplashPage(),
+      ),
+    );
   }
 }
