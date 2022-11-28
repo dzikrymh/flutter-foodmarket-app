@@ -186,12 +186,13 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
                             SizedBox(
                               width: 163,
                               height: 45,
-                              child: RaisedButton(
+                              child: ElevatedButton(
                                 onPressed: () {},
-                                color: mainColor,
-                                elevation: 0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: mainColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
                                 ),
                                 child: Text('Order Now',
                                     style: blackFontStyle3.copyWith(
